@@ -1,0 +1,28 @@
+stages:          # List of stages for jobs, and their order of execution
+  - e2e
+variables:
+  Locale:
+    value: en
+    options:
+      - en
+      - nl
+  Environment:
+    value: prod
+    options:
+       - prod
+       - test
+       - staging
+tests:   
+  stage: e2e   
+  image: mcr.microsoft.com/playwright:v1.29.0-focal
+  before_script:
+    - npm install
+    - npx playwright install
+  script:
+    - npm ci
+    - npm run env:$Environment
+  artifacts:
+    paths:
+        - playwright-report/
+        - test-output/
+    when: always
