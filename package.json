@@ -1,0 +1,35 @@
+{
+  "name": "miro-e2e-tests",
+  "version": "1.0.0",
+  "description": "e2e tests of Miro",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/Pieke/miro-e2e-tests.git"
+  },
+  "keywords": [],
+  "author": "Prabhukiran Narava <prabhukiran.narava@gmail.com>",
+  "license": "ISC",
+  "homepage": "https://gitlab.com/Pieke/miro-e2e-tests#readme",
+  "scripts": {
+    "env:prod": "cross-env test_env=prod npx playwright test --project='Desktop Firefox'",
+    "env:test": "cross-env test_env=test npx playwright test",
+    "env:dev": "cross-env test_env=dev npx playwright test",
+    "smoke": "npx playwright test  --workers=1 --grep @smoke --project='Desktop Firefox'",
+    "regression": "npx playwright test --workers=1 --grep @regression --project='Desktop Firefox'"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.47.0",
+    "eslint": "^8.30.0",
+    "eslint-config-standard-with-typescript": "^24.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.6.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "@playwright/test": "^1.29.0",
+    "dotenv": "^16.0.1",
+    "cross-env": "^7.0.3",
+    "random-email": "^1.0.3"
+  }
+}
