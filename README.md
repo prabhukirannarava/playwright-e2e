@@ -44,7 +44,7 @@ Project contains the below set of folders:
 
 
 ### Test Reports Location after the test run completion :
-	- miro-e2e-tests/playwright-report/index.html.
+	- playwright-e2e-tests/playwright-report/index.html.
 
 ### Automation Test details :
 
@@ -61,7 +61,7 @@ automated sign up flow. Two different scenarios are covered.
 1. NodeJS is required for this project, you can find installation instructions [here](https://nodejs.org/en/).
 2. Clone this repository:
 ```sh
-git clone https://gitlab.com/Pieke/miro-e2e-tests.git
+git clone https://github.com/prabhukirannarava/playwright-e2e-tests.git
 ```
 3. Go to the repository directory in the Terminal/Command line and run the following command to install dependencies:
 ```sh
@@ -74,7 +74,7 @@ npm run env:prod
 Note: Please check the package.json, scripts section to run tests against env of your choice.
 
 5. After the test run is finished, open test report in location.
-     - miro-e2e-tests/playwright-report/index.html.
+     - playwright-e2e-tests/playwright-report/index.html.
 
 ### Who do I talk to? ###
 Please reach out to me at prabhukiran.narava@gmail.com in case of questions and clarifications related to above set up.
