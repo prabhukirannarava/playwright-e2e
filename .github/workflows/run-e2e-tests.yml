@@ -1,0 +1,57 @@
+name: "E2E : Tests using Playwright"
+
+###
+#
+# Run e2e tests on pull requests
+#
+###
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: choice
+        required: true
+        description: Environment
+        options:
+          - prod
+          - test
+          - staging
+        default: prod
+      locale:
+        type: choice
+        required: true
+        description: Locale
+        options:
+          - en
+          - nl
+        default: en
+
+env:
+  CI: true
+  ENV: ${{ github.event.inputs.environment }}
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: ./src/tests
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "18.x"
+      - uses: microsoft/playwright-github-action@v1
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+      - name: Install dependencies and run tests
+        run: npm install && npx playwright test
+      - uses: actions/upload-artifact@v2
+        if: always()
+        with:
+         name: playwright-report
+         path: playwright-report/
+         retention-days: 30
